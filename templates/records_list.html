@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} All Records {% endblock %}
+
+{% block content %}
+    <h1>All Records</h1>
+    <a href="{{ url_for('create_record') }}">Create a New Record</a>
+{% if records %}
+    <ul>
+        {% for record in records %}
+            <li>
+                <strong>{{ record.title }}</strong>
+                {% if record.content %}
+                    <p>{{  record.content }}</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>No records yet. Create your first one</p>
+{% endif %}
+{% endblock %}
